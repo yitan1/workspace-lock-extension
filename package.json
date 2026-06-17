@@ -1,0 +1,44 @@
+{
+  "name": "workspace-lock",
+  "displayName": "Workspace Lock",
+  "description": "Toggle workspace read-only mode from the status bar.",
+  "version": "0.0.1",
+  "publisher": "local",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:workspaceLock.toggle",
+    "onCommand:workspaceLock.lock",
+    "onCommand:workspaceLock.unlock"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "workspaceLock.toggle",
+        "title": "Workspace Lock: Toggle"
+      },
+      {
+        "command": "workspaceLock.lock",
+        "title": "Workspace Lock: Lock Workspace"
+      },
+      {
+        "command": "workspaceLock.unlock",
+        "title": "Workspace Lock: Unlock Workspace"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "workspaceLock.toggle",
+        "key": "ctrl+alt+l",
+        "mac": "cmd+alt+l"
+      }
+    ]
+  }
+}
