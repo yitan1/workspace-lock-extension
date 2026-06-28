@@ -72,21 +72,23 @@ async function lockWorkspace(context) {
     exclude: clonePlainObject(workspaceExclude)
   });
 
-  await filesConfig.update(
-    "readonlyInclude",
-    {
-      ...asPlainObject(workspaceInclude),
-      [LOCK_PATTERN]: true
-    },
-    vscode.ConfigurationTarget.Workspace
-  );
-
+  // Exclude settings files before locking the workspace, otherwise the lock can
+  // make the settings file read-only before the exclusion is written.
   await filesConfig.update(
     "readonlyExclude",
     {
       ...asPlainObject(workspaceExclude),
       [SETTINGS_PATTERN]: true,
       [WORKSPACE_FILE_PATTERN]: true
+    },
+    vscode.ConfigurationTarget.Workspace
+  );
+
+  await filesConfig.update(
+    "readonlyInclude",
+    {
+      ...asPlainObject(workspaceInclude),
+      [LOCK_PATTERN]: true
     },
     vscode.ConfigurationTarget.Workspace
   );

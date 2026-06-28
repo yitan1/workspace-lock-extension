@@ -2,7 +2,7 @@
   "name": "workspace-lock",
   "displayName": "Workspace Lock",
   "description": "Toggle workspace read-only mode from the status bar.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "local",
   "license": "MIT",
   "engines": {
